@@ -1,0 +1,24 @@
+name: Pull Request Template
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  checkUser:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check User
+      id: check_user
+      run: echo "::set-output name=user::$(jq -r '.sender.login' "$GITHUB_EVENT_PATH")"
+
+    - name: Apply Template
+      if: steps.check_user.outputs.user == 'raakesh-m-ctct'
+      run: |
+        echo "## Description" > PR_TEMPLATE.md
+        echo "<!-- Describe the changes introduced by this pull request -->" >> PR_TEMPLATE.md
+        echo "## Checklist" >> PR_TEMPLATE.md
+        echo "- [ ] Code follows the project's coding standards" >> PR_TEMPLATE.md
+        echo "- [ ] Changes have been tested" >> PR_TEMPLATE.md
+        echo "- [ ] Documentation has been updated" >> PR_TEMPLATE.md
