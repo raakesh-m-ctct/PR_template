@@ -1,1 +1,1 @@
- 
+- [ ] Documentation has been updated" >> PR_TEMPLATE.md 
