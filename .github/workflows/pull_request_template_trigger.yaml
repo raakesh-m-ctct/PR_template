@@ -10,7 +10,7 @@ jobs:
     
     steps:
       - name: Check if pull request is from specific user
-        if: github.actor == 'premananth-banusekaran-ctct'
+        if: github.actor == 'raakesh-m-ctct'
         run: |
           echo "
           ## Describe your changes
