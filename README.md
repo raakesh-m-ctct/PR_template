@@ -1,4 +1,3 @@
 # PR_template
 Automatic adding of PR template
-new change
-in username
+new change with the user name change
