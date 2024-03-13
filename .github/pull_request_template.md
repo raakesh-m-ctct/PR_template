@@ -1,1 +1,20 @@
-  
+<!-- conditional: user_login == 'premananth-banusekaran-ctct' -->
+<!-- template: .github/pull_request_template.md -->
+
+
+## Describe your changes
+
+## Epic/Story ticket number and link
+   Epic/Story : (Add Epic/Story Link)
+
+## Checklist before merging feature branch to main
+- [ ] Has the  feature related open issues been resolved? 
+      (Add Epic Link)
+- [ ] Has Risk Assessment performed? 
+      (Add Risk Assesment link in MIRO)
+- [ ] Have we compared the feature branch AT results with the Main branch? 
+      (Add Gnasher AT comparision tool link)
+- [ ] Is the Feature/Bugs/Changes Bench tested and Alpha gave the clearance? 
+      (Add Test tracking ticket link)
+- [ ] Feature Demo given to the Stakeholders? 
+      (Add Demo Link)  
