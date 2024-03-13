@@ -16,9 +16,9 @@ jobs:
     - name: Apply Template
       if: steps.check_user.outputs.user == 'raakesh-m-ctct'
       run: |
-        echo "## Description" > PR_TEMPLATE.md
-        echo "<!-- Describe the changes introduced by this pull request -->" >> PR_TEMPLATE.md
-        echo "## Checklist" >> PR_TEMPLATE.md
-        echo "- [ ] Code follows the project's coding standards" >> PR_TEMPLATE.md
-        echo "- [ ] Changes have been tested" >> PR_TEMPLATE.md
-        echo "- [ ] Documentation has been updated" >> PR_TEMPLATE.md
+        echo "## Description" > pull_request_template.md
+        echo "<!-- Describe the changes introduced by this pull request -->" >> pull_request_template.md
+        echo "## Checklist" >> pull_request_template.md
+        echo "- [ ] Code follows the project's coding standards" >> pull_request_template.md
+        echo "- [ ] Changes have been tested" >> pull_request_template.md
+        echo "- [ ] Documentation has been updated" >> pull_request_template.md
