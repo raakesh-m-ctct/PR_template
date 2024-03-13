@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Check if pull request is from specific user
         if: github.actor == 'raakesh-m-ctct'
+        id: pr_template
         run: |
+          cat .github/pull_request_template.md > template.md
           echo "
           ## Describe your changes
 
@@ -28,7 +30,8 @@ jobs:
           - [ ] Is the Feature/Bugs/Changes Bench tested and Alpha gave the clearance? 
                 (Add Test tracking ticket link)
           - [ ] Feature Demo given to the Stakeholders? 
-                (Add Demo Link)"
+                (Add Demo Link)" >> template.md
+          echo "::set-output name=description::$(cat template.md)"
 
       - name: Set pull request description
         if: steps.check_pull_request_template.outputs.description != ''
