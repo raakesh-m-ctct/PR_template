@@ -1,0 +1,44 @@
+name: Pull Request Template Trigger
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  check_pull_request_template:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check if pull request is from specific user
+        if: github.actor == 'premananth-banusekaran-ctct'
+        run: |
+          echo "::set-output name=description::$(cat .github/PULL_REQUEST_TEMPLATE.md) \n\n 
+          ## Describe your changes
+
+          ## Epic/Story ticket number and link
+             Epic/Story : (Add Epic/Story Link)
+          
+          ## Checklist before merging feature branch to main
+          - [ ] Has the  feature related open issues been resolved? 
+                (Add Epic Link)
+          - [ ] Has Risk Assessment performed? 
+                (Add Risk Assesment link in MIRO)
+          - [ ] Have we compared the feature branch AT results with the Main branch? 
+                (Add Gnasher AT comparision tool link)
+          - [ ] Is the Feature/Bugs/Changes Bench tested and Alpha gave the clearance? 
+                (Add Test tracking ticket link)
+          - [ ] Feature Demo given to the Stakeholders? 
+                (Add Demo Link)"
+
+      - name: Set pull request description
+        if: steps.check_pull_request_template.outputs.description != ''
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '${{ steps.check_pull_request_template.outputs.description }}'
+            })
